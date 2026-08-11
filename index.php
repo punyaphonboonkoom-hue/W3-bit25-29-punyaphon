@@ -4,655 +4,881 @@ error_reporting(E_ALL);
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Game Store</title>
-   <style>
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+    <style>
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-/* =========================================
-   BODY
-========================================= */
 
-body {
+        /* =========================================
+           BODY
+        ========================================= */
 
-    background:
-        linear-gradient(
-            135deg,
-            #ffffff 0%,
-            #fff5f5 50%,
-            #ffffff 100%
-        );
+        body {
 
-    color: #222222;
+            background:
+                linear-gradient(
+                    135deg,
+                    #ffffff 0%,
+                    #fff5f5 50%,
+                    #ffffff 100%
+                );
 
-    font-family: 'Poppins', sans-serif;
+            color: #222222;
 
-    min-height: 100vh;
-}
+            font-family: 'Poppins', sans-serif;
 
+            min-height: 100vh;
 
-/* =========================================
-   NAVBAR
-========================================= */
+            display: flex;
 
-.navbar {
+            flex-direction: column;
+        }
 
-    background: #ffffff;
 
-    padding: 18px 48px;
+        /* =========================================
+           NAVBAR
+        ========================================= */
 
-    display: flex;
+        .navbar {
 
-    align-items: center;
+            background: #ffffff;
 
-    justify-content: space-between;
+            padding: 18px 48px;
 
-    border-bottom: 2px solid #eeeeee;
+            display: flex;
 
-    position: sticky;
+            align-items: center;
 
-    top: 0;
+            justify-content: space-between;
 
-    z-index: 10;
+            border-bottom: 2px solid #eeeeee;
 
-    box-shadow:
-        0 4px 15px rgba(0, 0, 0, 0.08);
-}
+            position: sticky;
 
+            top: 0;
 
-/* LOGO */
+            z-index: 10;
 
-.navbar .logo {
+            box-shadow:
+                0 4px 15px rgba(0, 0, 0, 0.08);
+        }
 
-    font-size: 23px;
 
-    font-weight: 800;
+        /* LOGO */
 
-    color: #e30613;
+        .navbar .logo {
 
-    letter-spacing: 0.5px;
-}
+            font-size: 23px;
 
+            font-weight: 800;
 
-/* NAV */
+            color: #e30613;
 
-.navbar nav a {
+            letter-spacing: 0.5px;
+        }
 
-    position: relative;
 
-    color: #555555;
+        /* NAV */
 
-    text-decoration: none;
+        .navbar nav a {
 
-    margin-left: 32px;
+            position: relative;
 
-    font-size: 14px;
+            color: #555555;
 
-    font-weight: 600;
+            text-decoration: none;
 
-    transition: all 0.25s;
-}
+            margin-left: 32px;
 
+            font-size: 14px;
 
-.navbar nav a::after {
+            font-weight: 600;
 
-    content: '';
+            transition: all 0.25s;
+        }
 
-    position: absolute;
 
-    left: 0;
+        .navbar nav a::after {
 
-    bottom: -7px;
+            content: '';
 
-    width: 0%;
+            position: absolute;
 
-    height: 3px;
+            left: 0;
 
-    background: #e30613;
+            bottom: -7px;
 
-    border-radius: 5px;
+            width: 0%;
 
-    transition: width 0.25s;
-}
+            height: 3px;
 
+            background: #e30613;
 
-.navbar nav a:hover {
+            border-radius: 5px;
 
-    color: #e30613;
-}
+            transition: width 0.25s;
+        }
 
 
-.navbar nav a:hover::after {
+        .navbar nav a:hover {
 
-    width: 100%;
-}
+            color: #e30613;
+        }
 
 
-/* ACTIVE */
+        .navbar nav a:hover::after {
 
-.navbar nav a.active {
+            width: 100%;
+        }
 
-    color: #e30613;
-}
 
+        /* ACTIVE */
 
-.navbar nav a.active::after {
+        .navbar nav a.active {
 
-    width: 100%;
-}
+            color: #e30613;
+        }
 
 
-/* =========================================
-   HEADER
-========================================= */
+        .navbar nav a.active::after {
 
-.page-header {
+            width: 100%;
+        }
 
-    max-width: 1200px;
 
-    margin: 48px auto 8px;
+        /* =========================================
+           HEADER
+        ========================================= */
 
-    padding: 0 48px;
-}
+        .page-header {
 
+            max-width: 1200px;
 
-.page-header h1 {
+            width: 100%;
 
-    font-size: 34px;
+            margin: 48px auto 8px;
 
-    font-weight: 800;
+            padding: 0 48px;
+        }
 
-    color: #222222;
 
-    letter-spacing: -0.5px;
-}
+        .page-header h1 {
 
+            font-size: 34px;
 
-.page-header h1::first-letter {
+            font-weight: 800;
 
-    color: #e30613;
-}
+            color: #222222;
 
+            letter-spacing: -0.5px;
+        }
 
-.page-header p {
 
-    margin-top: 7px;
+        .page-header h1::first-letter {
 
-    color: #888888;
+            color: #e30613;
+        }
 
-    font-size: 14px;
-}
 
+        .page-header p {
 
-/* =========================================
-   RED LINE
-========================================= */
+            margin-top: 7px;
 
-.page-header::before {
+            color: #888888;
 
-    content: '';
+            font-size: 14px;
+        }
 
-    display: block;
 
-    width: 55px;
+        /* =========================================
+           RED LINE
+        ========================================= */
 
-    height: 5px;
+        .page-header::before {
 
-    background: #e30613;
+            content: '';
 
-    border-radius: 10px;
+            display: block;
 
-    margin-bottom: 14px;
-}
+            width: 55px;
 
+            height: 5px;
 
-/* =========================================
-   TABLE WRAPPER
-========================================= */
+            background: #e30613;
 
-.table-wrap {
+            border-radius: 10px;
 
-    max-width: 1200px;
+            margin-bottom: 14px;
+        }
 
-    margin: 32px auto 70px;
 
-    padding: 0 48px;
-}
+        /* =========================================
+           TABLE WRAPPER
+        ========================================= */
 
+        .table-wrap {
 
-/* =========================================
-   TABLE CARD
-========================================= */
+            max-width: 1200px;
 
-.table-card {
+            width: 100%;
 
-    background: #ffffff;
+            margin: 32px auto 70px;
 
-    border: 1px solid #eeeeee;
+            padding: 0 48px;
 
-    border-radius: 16px;
+            flex: 1;
+        }
 
-    overflow: hidden;
 
-    box-shadow:
-        0 10px 30px rgba(0, 0, 0, 0.08);
-}
+        /* =========================================
+           TABLE CARD
+        ========================================= */
 
+        .table-card {
 
-/* =========================================
-   TABLE
-========================================= */
+            background: #ffffff;
 
-table {
+            border: 1px solid #eeeeee;
 
-    width: 100%;
+            border-radius: 16px;
 
-    border-collapse: collapse;
-}
+            overflow: hidden;
 
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.08);
+        }
 
-/* HEADER */
 
-thead th {
+        /* =========================================
+           TABLE
+        ========================================= */
 
-    text-align: left;
+        table {
 
-    font-size: 12px;
+            width: 100%;
 
-    font-weight: 700;
+            border-collapse: collapse;
+        }
 
-    letter-spacing: 0.7px;
 
-    text-transform: uppercase;
+        /* HEADER */
 
-    color: #ffffff;
+        thead th {
 
-    background: #e30613;
+            text-align: left;
 
-    padding: 17px 20px;
+            font-size: 12px;
 
-    border-bottom: 1px solid #d0000c;
-}
+            font-weight: 700;
 
+            letter-spacing: 0.7px;
 
-/* BODY */
+            text-transform: uppercase;
 
-tbody td {
+            color: #ffffff;
 
-    padding: 16px 20px;
+            background: #e30613;
 
-    font-size: 14px;
+            padding: 17px 20px;
 
-    color: #333333;
+            border-bottom: 1px solid #d0000c;
+        }
 
-    border-bottom:
-        1px solid #eeeeee;
 
-    vertical-align: middle;
-}
+        /* BODY */
 
+        tbody td {
 
-/* ROW */
+            padding: 16px 20px;
 
-tbody tr {
+            font-size: 14px;
 
-    background: #ffffff;
+            color: #333333;
 
-    transition: all 0.2s;
-}
+            border-bottom:
+                1px solid #eeeeee;
 
+            vertical-align: middle;
+        }
 
-tbody tr:hover {
 
-    background: #fff5f5;
-}
+        /* ROW */
 
+        tbody tr {
 
-tbody tr:last-child td {
+            background: #ffffff;
 
-    border-bottom: none;
-}
+            transition: all 0.2s;
+        }
 
 
-/* =========================================
-   IMAGE
-========================================= */
+        tbody tr:hover {
 
-.cover-thumb {
+            background: #fff5f5;
+        }
 
-    width: 200px;
 
-    height: 100px;
+        tbody tr:last-child td {
 
-    object-fit: cover;
+            border-bottom: none;
+        }
 
-    border-radius: 8px;
 
-    display: block;
+        /* =========================================
+           IMAGE
+        ========================================= */
 
-    box-shadow:
-        0 4px 12px rgba(0, 0, 0, 0.15);
+        .cover-thumb {
 
-    border: 2px solid #ffffff;
+            width: 200px;
 
-    transition: all 0.25s;
-}
+            height: 100px;
 
+            object-fit: cover;
 
-.cover-thumb:hover {
+            border-radius: 8px;
 
-    transform: scale(1.04);
+            display: block;
 
-    border-color: #e30613;
+            box-shadow:
+                0 4px 12px rgba(0, 0, 0, 0.15);
 
-    box-shadow:
-        0 6px 20px rgba(227, 6, 19, 0.25);
-}
+            border: 2px solid #ffffff;
 
+            transition: all 0.25s;
+        }
 
-/* =========================================
-   ID
-========================================= */
 
-.cell-id {
+        .cover-thumb:hover {
 
-    color: #999999;
+            transform: scale(1.04);
 
-    font-size: 12px;
+            border-color: #e30613;
 
-    font-weight: 600;
-}
+            box-shadow:
+                0 6px 20px rgba(227, 6, 19, 0.25);
+        }
 
 
-/* =========================================
-   GAME NAME
-========================================= */
+        /* =========================================
+           ID
+        ========================================= */
 
-.cell-name {
+        .cell-id {
 
-    font-weight: 700;
+            color: #999999;
 
-    color: #222222;
-}
+            font-size: 12px;
 
+            font-weight: 600;
+        }
 
-/* =========================================
-   PRICE
-========================================= */
 
-.cell-price {
+        /* =========================================
+           GAME NAME
+        ========================================= */
 
-    font-weight: 800;
+        .cell-name {
 
-    color: #e30613;
+            font-weight: 700;
 
-    font-size: 15px;
-}
+            color: #222222;
+        }
 
 
-/* =========================================
-   TYPE
-========================================= */
+        /* =========================================
+           PRICE
+        ========================================= */
 
-.badge-type {
+        .cell-price {
 
-    display: inline-block;
+            font-weight: 800;
 
-    background: #fff0f0;
+            color: #e30613;
 
-    color: #e30613;
+            font-size: 15px;
+        }
 
-    border:
-        1px solid #ffcaca;
 
-    font-size: 11px;
+        /* =========================================
+           TYPE
+        ========================================= */
 
-    font-weight: 700;
+        .badge-type {
 
-    padding: 5px 12px;
+            display: inline-block;
 
-    border-radius: 20px;
-}
+            background: #fff0f0;
 
+            color: #e30613;
 
-/* =========================================
-   RED BUTTON
-========================================= */
+            border:
+                1px solid #ffcaca;
 
-.btn-red {
+            font-size: 11px;
 
-    display: inline-block;
+            font-weight: 700;
 
-    padding: 11px 20px;
+            padding: 5px 12px;
 
-    color: #ffffff;
+            border-radius: 20px;
+        }
 
-    background: #e30613;
 
-    border: none;
+        /* =========================================
+           RED BUTTON
+        ========================================= */
 
-    border-radius: 8px;
+        .btn-red {
 
-    text-decoration: none;
+            display: inline-block;
 
-    font-size: 13px;
+            padding: 11px 20px;
 
-    font-weight: 700;
+            color: #ffffff;
 
-    box-shadow:
-        0 5px 15px rgba(227, 6, 19, 0.2);
+            background: #e30613;
 
-    transition: all 0.25s;
-}
+            border: none;
 
+            border-radius: 8px;
 
-.btn-red:hover {
+            text-decoration: none;
 
-    background: #c9000b;
+            font-size: 13px;
 
-    transform: translateY(-2px);
+            font-weight: 700;
 
-    box-shadow:
-        0 8px 20px rgba(227, 6, 19, 0.3);
-}
+            box-shadow:
+                0 5px 15px rgba(227, 6, 19, 0.2);
 
+            transition: all 0.25s;
+        }
 
-/* =========================================
-   ERROR / EMPTY
-========================================= */
 
-.message {
+        .btn-red:hover {
 
-    text-align: center;
+            background: #c9000b;
 
-    padding: 50px 20px;
+            transform: translateY(-2px);
 
-    color: #888888;
+            box-shadow:
+                0 8px 20px rgba(227, 6, 19, 0.3);
+        }
 
-    font-size: 15px;
-}
 
+        /* =========================================
+           ERROR / EMPTY
+        ========================================= */
 
-.message.error {
+        .message {
 
-    color: #e30613;
-}
+            text-align: center;
 
+            padding: 50px 20px;
 
-/* =========================================
-   SCROLLBAR
-========================================= */
+            color: #888888;
 
-::-webkit-scrollbar {
+            font-size: 15px;
+        }
 
-    width: 8px;
 
-    height: 8px;
-}
+        .message.error {
 
+            color: #e30613;
+        }
 
-::-webkit-scrollbar-track {
 
-    background: #f5f5f5;
-}
+        /* =========================================
+           FOOTER
+        ========================================= */
 
+        .footer {
 
-::-webkit-scrollbar-thumb {
+            width: 100%;
 
-    background: #e30613;
+            background: #ffffff;
 
-    border-radius: 10px;
-}
+            border-top: 3px solid #e30613;
 
+            padding: 22px 20px;
 
-::-webkit-scrollbar-thumb:hover {
+            text-align: center;
 
-    background: #b8000a;
-}
+            margin-top: auto;
 
+            box-shadow:
+                0 -4px 15px rgba(0, 0, 0, 0.05);
+        }
 
-/* =========================================
-   RESPONSIVE
-========================================= */
 
-@media (max-width: 768px) {
+        .footer-name {
 
-    .navbar {
+            color: #e30613;
 
-        padding: 16px 20px;
+            font-size: 15px;
 
-        flex-direction: column;
+            font-weight: 700;
 
-        gap: 15px;
-    }
+            margin-bottom: 5px;
+        }
 
 
-    .navbar nav {
+        .footer-class {
 
-        display: flex;
+            color: #777777;
 
-        flex-wrap: wrap;
+            font-size: 13px;
 
-        justify-content: center;
-    }
+            font-weight: 600;
+        }
 
 
-    .navbar nav a {
+        /* =========================================
+           SCROLLBAR
+        ========================================= */
 
-        margin: 5px 10px;
-    }
+        ::-webkit-scrollbar {
 
+            width: 8px;
 
-    .page-header {
+            height: 8px;
+        }
 
-        padding: 0 20px;
-    }
 
+        ::-webkit-scrollbar-track {
 
-    .table-wrap {
+            background: #f5f5f5;
+        }
 
-        padding: 0 20px;
 
-        overflow-x: auto;
-    }
+        ::-webkit-scrollbar-thumb {
 
+            background: #e30613;
 
-    .cover-thumb {
+            border-radius: 10px;
+        }
 
-        width: 120px;
 
-        height: 80px;
-    }
+        ::-webkit-scrollbar-thumb:hover {
 
-}
+            background: #b8000a;
+        }
 
-</style>
+
+        /* =========================================
+           RESPONSIVE
+        ========================================= */
+
+        @media (max-width: 768px) {
+
+            .navbar {
+
+                padding: 16px 20px;
+
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+
+            .navbar nav {
+
+                display: flex;
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+            }
+
+
+            .navbar nav a {
+
+                margin: 5px 10px;
+            }
+
+
+            .page-header {
+
+                padding: 0 20px;
+            }
+
+
+            .table-wrap {
+
+                padding: 0 20px;
+
+                overflow-x: auto;
+            }
+
+
+            .cover-thumb {
+
+                width: 120px;
+
+                height: 80px;
+            }
+
+
+            .footer {
+
+                padding: 20px 15px;
+            }
+
+        }
+
+    </style>
+
     <link rel="stylesheet" href="assets/css/steam.css">
+
 </head>
+
+
 <body>
 
-    <!-- NAVBAR -->
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
     <div class="navbar">
-        <div class="logo">SandStore🎮</div>
+
+        <div class="logo">
+            SandStore🎮
+        </div>
+
         <nav>
-            <a href="index.php">Home</a>
-            <a href="game_type.php">Game Types</a>
-            <a href="add_game.php">Game add</a>
-            <a href="manage_game.php">Manage game</a>
+
+            <a href="index.php" class="active">
+                Home
+            </a>
+
+            <a href="game_type.php">
+                Game Types
+            </a>
+
+            <a href="add_game.php">
+                Game add
+            </a>
+
+            <a href="manage_game.php">
+                Manage game
+            </a>
+
         </nav>
+
     </div>
+
+
+    <!-- =========================
+         PAGE HEADER
+    ========================== -->
 
     <div class="page-header">
-        <h1>All Games</h1>
-        <p>รายการเกมทั้งหมดในร้าน</p>
+
+        <h1>
+            All Games
+        </h1>
+
+        <p>
+            รายการเกมทั้งหมดในร้าน
+        </p>
+
     </div>
 
-    <!-- GAME TABLE -->
+
+    <!-- =========================
+         DATABASE
+    ========================== -->
+
     <?php
-    //แสดง error
+
     error_reporting(E_ALL);
+
     ini_set('display_errors', 1);
+
     ini_set('display_startup_errors', 1);
 
     include 'action/connect.php';
+
     ?>
 
+
+    <!-- =========================
+         GAME TABLE
+    ========================== -->
+
     <div class="table-wrap">
+
         <div class="table-card">
-        <?php
-        if(!$con){
-            echo '<div class="message error">Cannot connect to database.</div>';
-        } else {
 
-            $sql = "SELECT * FROM games";
-            $result = mysqli_query($con, $sql);
-
-            if(!$result){
-                echo '<div class="message error">เกิดข้อผิดพลาดในการดึงข้อมูล</div>';
-            } elseif(mysqli_num_rows($result) === 0){
-                echo '<div class="message">ยังไม่มีเกมในระบบ</div>';
-            } else {
-            ?>
-            <table>
-                <thead>
-                    <tr>
-                        <th>รหัสเกม</th>
-                        <th>ภาพปก</th>
-                        <th>ชื่อเกม</th>
-                        <th>ราคา</th>
-                        <th>ประเภท</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    foreach($result as $game){
-                        ?>
-                        <tr>
-                            <td class="cell-id">#<?= $game["game_id"] ?></td>
-                            <td><img class="cover-thumb" src="<?= $game["game_cover"] ?>" alt=""></td>
-                            <td class="cell-name"><?= $game["game_name"] ?></td>
-                            <td class="cell-price">฿<?= number_format($game["game_price"], 2) ?></td>
-                            <td><span class="badge-type">Type <?= $game["type_id"] ?></span></td>
-                        </tr>
-                        <?php
-                    }
-                    ?>
-                </tbody>
-            </table>
             <?php
+
+            if(!$con){
+
+                echo '
+                    <div class="message error">
+                        Cannot connect to database.
+                    </div>
+                ';
+
+            } else {
+
+                $sql = "SELECT * FROM games";
+
+                $result = mysqli_query($con, $sql);
+
+
+                if(!$result){
+
+                    echo '
+                        <div class="message error">
+                            เกิดข้อผิดพลาดในการดึงข้อมูล
+                        </div>
+                    ';
+
+                } elseif(mysqli_num_rows($result) === 0){
+
+                    echo '
+                        <div class="message">
+                            ยังไม่มีเกมในระบบ
+                        </div>
+                    ';
+
+                } else {
+
+            ?>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            รหัสเกม
+                        </th>
+
+                        <th>
+                            ภาพปก
+                        </th>
+
+                        <th>
+                            ชื่อเกม
+                        </th>
+
+                        <th>
+                            ราคา
+                        </th>
+
+                        <th>
+                            ประเภท
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <?php
+
+                    foreach($result as $game){
+
+                    ?>
+
+                    <tr>
+
+                        <td class="cell-id">
+                            #<?= $game["game_id"] ?>
+                        </td>
+
+
+                        <td>
+
+                            <img
+                                class="cover-thumb"
+                                src="<?= $game["game_cover"] ?>"
+                                alt=""
+                            >
+
+                        </td>
+
+
+                        <td class="cell-name">
+                            <?= $game["game_name"] ?>
+                        </td>
+
+
+                        <td class="cell-price">
+                            ฿<?= number_format($game["game_price"], 2) ?>
+                        </td>
+
+
+                        <td>
+
+                            <span class="badge-type">
+                                Type <?= $game["type_id"] ?>
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+                    <?php
+
+                    }
+
+                    ?>
+
+                </tbody>
+
+            </table>
+
+            <?php
+
+                }
+
             }
-        }
-        ?>
+
+            ?>
+
         </div>
+
     </div>
 
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer class="footer">
+
+        <div class="footer-name">
+            นส ปุณยาพร บุญคุ้ม
+        </div>
+
+        <div class="footer-class">
+            เลขที่ 29 | BIT25
+        </div>
+
+    </footer>
+
+
 </body>
+
 </html>
