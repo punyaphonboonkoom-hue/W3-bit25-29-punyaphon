@@ -7,8 +7,8 @@ error_reporting(E_ALL);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Types - Game Store</title>
-    <style>
+    <title>Game Store</title>
+<style>
 
 * {
     margin: 0;
@@ -575,13 +575,13 @@ tbody tr:last-child td {
 }
 
 </style>
-     <link rel="stylesheet" href="assets/css/steam.css">
+    <link rel="stylesheet" href="assets/css/steam.css">
 </head>
 <body>
 
     <!-- NAVBAR -->
     <div class="navbar">
-       <div class="logo">SandStore🎮</div>
+      <div class="logo">SandStore🎮</div>
         <nav>
               <a href="index.php">Home</a>
             <a href="game_type.php">Game Types</a>
@@ -591,11 +591,11 @@ tbody tr:last-child td {
     </div>
 
     <div class="page-header">
-        <h1>Game Types</h1>
-        <p>ประเภทเกมทั้งหมดในร้าน</p>
+        <h1>All Games</h1>
+        <p>รายการเกมทั้งหมดในร้าน</p>
     </div>
 
-    <!-- TYPE TABLE -->
+    <!-- GAME TABLE -->
     <?php
     //แสดง error
     error_reporting(E_ALL);
@@ -612,32 +612,40 @@ tbody tr:last-child td {
             echo '<div class="message error">Cannot connect to database.</div>';
         } else {
 
-            $sql = "SELECT * FROM game_types";
+            $sql = "SELECT * FROM games";
             $result = mysqli_query($con, $sql);
 
             if(!$result){
                 echo '<div class="message error">เกิดข้อผิดพลาดในการดึงข้อมูล</div>';
             } elseif(mysqli_num_rows($result) === 0){
-                echo '<div class="message">ยังไม่มีประเภทเกมในระบบ</div>';
+                echo '<div class="message">ยังไม่มีเกมในระบบ</div>';
             } else {
             ?>
             <table>
                 <thead>
                     <tr>
-                        <th></th>
-                        <th>รหัสประเภท</th>
-                        <th>ชื่อประเภท</th>
+                        <th>รหัสเกม</th>
+                        <th>ภาพปก</th>
+                        <th>ชื่อเกม</th>
+                        <th>ราคา</th>
+                        <th>ประเภท</th>
+                        <th>จัดการ</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                    foreach($result as $type){
-                        $initial = mb_substr($type["type_name"], 0, 1, 'UTF-8');
+                    foreach($result as $game){
                         ?>
                         <tr>
-                            <td style="width:50px"><div class="type-icon"><?= $initial ?></div></td>
-                            <td class="cell-id">#<?= $type["type_id"] ?></td>
-                            <td class="cell-name"><?= $type["type_name"] ?></td>
+                            <td class="cell-id">#<?= $game["game_id"] ?></td>
+                            <td><img class="cover-thumb" src="<?= $game["game_cover"] ?>" alt=""></td>
+                            <td class="cell-name"><?= $game["game_name"] ?></td>
+                            <td class="cell-price">฿<?= number_format($game["game_price"], 2) ?></td>
+                            <td><span class="badge-type">Type <?= $game["type_id"] ?></span></td>
+                            <td>
+                                <a class="action-link btn-edit" href="edit_game.php?id=<?= $game['game_id'] ?>">แก้ไข</a>
+                                <a class="action-link btn-delete" href="action/delete_game.php?id=<?= $game['game_id'] ?>">ลบ</a>
+                            </td>
                         </tr>
                         <?php
                     }

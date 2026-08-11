@@ -1,168 +1,658 @@
+<?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game List</title>
+    <title>Game Store</title>
+   <style>
 
-    <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family: Arial, Helvetica, sans-serif;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body{
-            background:#eeeeee;
-            padding:30px;
-        }
 
-        .container{
-            background:white;
-            max-width:1200px;
-            margin:auto;
-            padding:25px;
-            border-radius:30px;
-            border:1px solid #ececec;
+/* =========================================
+   BODY
+========================================= */
 
-            box-shadow:
-                0 15px 35px rgba(0,0,0,0.12),
-                0 5px 15px rgba(0,0,0,0.08);
-        }
+body {
 
-        .btn-center{
-            text-align:center;
-            margin-bottom:25px;
-        }
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff 0%,
+            #fff5f5 50%,
+            #ffffff 100%
+        );
 
-        .btn-red{
-            display:inline-block;
-            text-decoration:none;
-            color:#e11d1d;
-            background:white;
+    color: #222222;
 
-            padding:15px 60px;
+    font-family: 'Poppins', sans-serif;
 
-            border:4px solid #e11d1d;
-            border-radius:50px;
+    min-height: 100vh;
+}
 
-            font-size:22px;
-            font-weight:bold;
 
-            box-shadow:0 5px 15px rgba(0,0,0,0.1);
+/* =========================================
+   NAVBAR
+========================================= */
 
-            transition:0.3s;
-        }
+.navbar {
 
-        .btn-red:hover{
-            background:#e11d1d;
-            color:white;
-            transform:translateY(-3px);
-        }
+    background: #ffffff;
 
-        table{
-            width:100%;
-            border-collapse:collapse;
-            overflow:hidden;
-            border-radius:20px;
-            background:white;
+    padding: 18px 48px;
 
-            box-shadow:
-                0 8px 20px rgba(0,0,0,0.08);
-        }
+    display: flex;
 
-        thead{
-            background:#e11d1d;
-            color:white;
-        }
+    align-items: center;
 
-        th{
-            padding:15px;
-            font-size:18px;
-        }
+    justify-content: space-between;
 
-        td{
-            padding:12px;
-            text-align:center;
-            border-bottom:1px solid #ddd;
-            font-size:16px;
-        }
+    border-bottom: 2px solid #eeeeee;
 
-        tbody tr{
-            transition:0.3s;
-        }
+    position: sticky;
 
-        tbody tr:hover{
-            background:#fff5f5;
-        }
+    top: 0;
 
-        img{
-            width:170px;
-            border-radius:15px;
-            box-shadow:0 5px 15px rgba(0,0,0,0.15);
-        }
-    </style>
+    z-index: 10;
 
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+
+/* LOGO */
+
+.navbar .logo {
+
+    font-size: 23px;
+
+    font-weight: 800;
+
+    color: #e30613;
+
+    letter-spacing: 0.5px;
+}
+
+
+/* NAV */
+
+.navbar nav a {
+
+    position: relative;
+
+    color: #555555;
+
+    text-decoration: none;
+
+    margin-left: 32px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    transition: all 0.25s;
+}
+
+
+.navbar nav a::after {
+
+    content: '';
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: -7px;
+
+    width: 0%;
+
+    height: 3px;
+
+    background: #e30613;
+
+    border-radius: 5px;
+
+    transition: width 0.25s;
+}
+
+
+.navbar nav a:hover {
+
+    color: #e30613;
+}
+
+
+.navbar nav a:hover::after {
+
+    width: 100%;
+}
+
+
+/* ACTIVE */
+
+.navbar nav a.active {
+
+    color: #e30613;
+}
+
+
+.navbar nav a.active::after {
+
+    width: 100%;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.page-header {
+
+    max-width: 1200px;
+
+    margin: 48px auto 8px;
+
+    padding: 0 48px;
+}
+
+
+.page-header h1 {
+
+    font-size: 34px;
+
+    font-weight: 800;
+
+    color: #222222;
+
+    letter-spacing: -0.5px;
+}
+
+
+.page-header h1::first-letter {
+
+    color: #e30613;
+}
+
+
+.page-header p {
+
+    margin-top: 7px;
+
+    color: #888888;
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   RED LINE
+========================================= */
+
+.page-header::before {
+
+    content: '';
+
+    display: block;
+
+    width: 55px;
+
+    height: 5px;
+
+    background: #e30613;
+
+    border-radius: 10px;
+
+    margin-bottom: 14px;
+}
+
+
+/* =========================================
+   TABLE WRAPPER
+========================================= */
+
+.table-wrap {
+
+    max-width: 1200px;
+
+    margin: 32px auto 70px;
+
+    padding: 0 48px;
+}
+
+
+/* =========================================
+   TABLE CARD
+========================================= */
+
+.table-card {
+
+    background: #ffffff;
+
+    border: 1px solid #eeeeee;
+
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================================
+   TABLE
+========================================= */
+
+table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+
+/* HEADER */
+
+thead th {
+
+    text-align: left;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.7px;
+
+    text-transform: uppercase;
+
+    color: #ffffff;
+
+    background: #e30613;
+
+    padding: 17px 20px;
+
+    border-bottom: 1px solid #d0000c;
+}
+
+
+/* BODY */
+
+tbody td {
+
+    padding: 16px 20px;
+
+    font-size: 14px;
+
+    color: #333333;
+
+    border-bottom:
+        1px solid #eeeeee;
+
+    vertical-align: middle;
+}
+
+
+/* ROW */
+
+tbody tr {
+
+    background: #ffffff;
+
+    transition: all 0.2s;
+}
+
+
+tbody tr:hover {
+
+    background: #fff5f5;
+}
+
+
+tbody tr:last-child td {
+
+    border-bottom: none;
+}
+
+
+/* =========================================
+   IMAGE
+========================================= */
+
+.cover-thumb {
+
+    width: 200px;
+
+    height: 100px;
+
+    object-fit: cover;
+
+    border-radius: 8px;
+
+    display: block;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.15);
+
+    border: 2px solid #ffffff;
+
+    transition: all 0.25s;
+}
+
+
+.cover-thumb:hover {
+
+    transform: scale(1.04);
+
+    border-color: #e30613;
+
+    box-shadow:
+        0 6px 20px rgba(227, 6, 19, 0.25);
+}
+
+
+/* =========================================
+   ID
+========================================= */
+
+.cell-id {
+
+    color: #999999;
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================
+   GAME NAME
+========================================= */
+
+.cell-name {
+
+    font-weight: 700;
+
+    color: #222222;
+}
+
+
+/* =========================================
+   PRICE
+========================================= */
+
+.cell-price {
+
+    font-weight: 800;
+
+    color: #e30613;
+
+    font-size: 15px;
+}
+
+
+/* =========================================
+   TYPE
+========================================= */
+
+.badge-type {
+
+    display: inline-block;
+
+    background: #fff0f0;
+
+    color: #e30613;
+
+    border:
+        1px solid #ffcaca;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    padding: 5px 12px;
+
+    border-radius: 20px;
+}
+
+
+/* =========================================
+   RED BUTTON
+========================================= */
+
+.btn-red {
+
+    display: inline-block;
+
+    padding: 11px 20px;
+
+    color: #ffffff;
+
+    background: #e30613;
+
+    border: none;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    box-shadow:
+        0 5px 15px rgba(227, 6, 19, 0.2);
+
+    transition: all 0.25s;
+}
+
+
+.btn-red:hover {
+
+    background: #c9000b;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(227, 6, 19, 0.3);
+}
+
+
+/* =========================================
+   ERROR / EMPTY
+========================================= */
+
+.message {
+
+    text-align: center;
+
+    padding: 50px 20px;
+
+    color: #888888;
+
+    font-size: 15px;
+}
+
+
+.message.error {
+
+    color: #e30613;
+}
+
+
+/* =========================================
+   SCROLLBAR
+========================================= */
+
+::-webkit-scrollbar {
+
+    width: 8px;
+
+    height: 8px;
+}
+
+
+::-webkit-scrollbar-track {
+
+    background: #f5f5f5;
+}
+
+
+::-webkit-scrollbar-thumb {
+
+    background: #e30613;
+
+    border-radius: 10px;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+
+    background: #b8000a;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 768px) {
+
+    .navbar {
+
+        padding: 16px 20px;
+
+        flex-direction: column;
+
+        gap: 15px;
+    }
+
+
+    .navbar nav {
+
+        display: flex;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+
+    .navbar nav a {
+
+        margin: 5px 10px;
+    }
+
+
+    .page-header {
+
+        padding: 0 20px;
+    }
+
+
+    .table-wrap {
+
+        padding: 0 20px;
+
+        overflow-x: auto;
+    }
+
+
+    .cover-thumb {
+
+        width: 120px;
+
+        height: 80px;
+    }
+
+}
+
+</style>
+    <link rel="stylesheet" href="assets/css/steam.css">
 </head>
 <body>
 
-<div class="container">
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <div class="logo">SandStore🎮</div>
+        <nav>
+            <a href="index.php">Home</a>
+            <a href="game_type.php">Game Types</a>
+            <a href="add_game.php">Game add</a>
+            <a href="manage_game.php">Manage game</a>
+        </nav>
+    </div>
 
-<?php
-//แสดง error
+    <div class="page-header">
+        <h1>All Games</h1>
+        <p>รายการเกมทั้งหมดในร้าน</p>
+    </div>
 
-// Report all PHP errors
-error_reporting(E_ALL);
+    <!-- GAME TABLE -->
+    <?php
+    //แสดง error
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
 
-// Force errors to be displayed on the screen
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
+    include 'action/connect.php';
+    ?>
 
-include 'action/connect.php';
+    <div class="table-wrap">
+        <div class="table-card">
+        <?php
+        if(!$con){
+            echo '<div class="message error">Cannot connect to database.</div>';
+        } else {
 
-//. เลือกทั้งหมดจากตารางเกม
-$sql = "SELECT * FROM games";
-$result = mysqli_query($con,$sql);
-?>
+            $sql = "SELECT * FROM games";
+            $result = mysqli_query($con, $sql);
 
-<div class="btn-center">
-    <a href="game_type.php" class="btn-red">Game Type</a>
-</div>
-
-<table border="1">
-   <thead>
-      <tr>
-         <th>รหัสเกม</th>
-         <th>ชื่อเกม</th>
-         <th>ราคา</th>
-         <th>ภาพปก</th>
-         <th>ประเภท</th>
-      </tr>
-   </thead>
-
-   <?php
-      foreach($result as $game){
-   ?>
-         <tr>
-            <td><?= $game["game_id"] ?></td>
-            <td><?= $game["game_name"] ?></td>
-            <td><?= $game["game_price"] ?></td>
-            <td>
-               <img
-               src="<?= $game["game_cover"] ?>"
-               style="width:170px"
-               >
-            </td>
-            <td><?= $game["type_id"] ?></td>
-         </tr>
-   <?php
-      }
-   ?>
-
-</table>
-
-</div>
+            if(!$result){
+                echo '<div class="message error">เกิดข้อผิดพลาดในการดึงข้อมูล</div>';
+            } elseif(mysqli_num_rows($result) === 0){
+                echo '<div class="message">ยังไม่มีเกมในระบบ</div>';
+            } else {
+            ?>
+            <table>
+                <thead>
+                    <tr>
+                        <th>รหัสเกม</th>
+                        <th>ภาพปก</th>
+                        <th>ชื่อเกม</th>
+                        <th>ราคา</th>
+                        <th>ประเภท</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    foreach($result as $game){
+                        ?>
+                        <tr>
+                            <td class="cell-id">#<?= $game["game_id"] ?></td>
+                            <td><img class="cover-thumb" src="<?= $game["game_cover"] ?>" alt=""></td>
+                            <td class="cell-name"><?= $game["game_name"] ?></td>
+                            <td class="cell-price">฿<?= number_format($game["game_price"], 2) ?></td>
+                            <td><span class="badge-type">Type <?= $game["type_id"] ?></span></td>
+                        </tr>
+                        <?php
+                    }
+                    ?>
+                </tbody>
+            </table>
+            <?php
+            }
+        }
+        ?>
+        </div>
+    </div>
 
 </body>
 </html>
