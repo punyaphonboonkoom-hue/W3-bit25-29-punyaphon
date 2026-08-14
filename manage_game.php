@@ -519,6 +519,24 @@ tbody tr:last-child td {
 }
 
 
+
+    .footer {
+
+            width: 100%;
+
+            background: #ffffff;
+
+            border-top: 3px solid #e30613;
+
+            padding: 22px 20px;
+
+            text-align: center;
+
+            margin-top: auto;
+
+            box-shadow:
+                0 -4px 15px rgba(0, 0, 0, 0.05);
+        }
 /* =========================================
    RESPONSIVE
 ========================================= */
@@ -658,6 +676,17 @@ tbody tr:last-child td {
         ?>
         </div>
     </div>
+  <footer class="footer">
+
+        <div class="footer-name">
+            นส ปุณยาพร บุญคุ้ม
+        </div>
+
+        <div class="footer-class">
+            เลขที่ 29 | BIT25
+        </div>
+
+    </footer>
 
 </body>
 </html>

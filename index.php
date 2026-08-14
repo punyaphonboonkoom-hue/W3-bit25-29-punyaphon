@@ -711,7 +711,7 @@ error_reporting(E_ALL);
     ini_set('display_errors', 1);
 
     ini_set('display_startup_errors', 1);
-
+// อิคคิว ดึงข้อมูล
     include 'action/connect.php';
 
     ?>
@@ -728,7 +728,7 @@ error_reporting(E_ALL);
             <?php
 
             if(!$con){
-
+                //เช็คสว่าเชื่อมยัง
                 echo '
                     <div class="message error">
                         Cannot connect to database.
@@ -736,12 +736,12 @@ error_reporting(E_ALL);
                 ';
 
             } else {
-
+//
                 $sql = "SELECT * FROM games";
 
                 $result = mysqli_query($con, $sql);
 
-
+            //เช็คว่าข้อมูลผิดพลาดไหม
                 if(!$result){
 
                     echo '
@@ -749,7 +749,7 @@ error_reporting(E_ALL);
                             เกิดข้อผิดพลาดในการดึงข้อมูล
                         </div>
                     ';
-
+                    //เช็คว่ามีข้อมูลในระบบไหม
                 } elseif(mysqli_num_rows($result) === 0){
 
                     echo '
@@ -763,10 +763,8 @@ error_reporting(E_ALL);
             ?>
 
             <table>
-
-                <thead>
-
-                    <tr>
+                     <thead>
+                        <tr>
 
                         <th>
                             รหัสเกม
@@ -796,13 +794,12 @@ error_reporting(E_ALL);
                 <tbody>
 
                     <?php
-
+                    // วนลูปข้อมูลที่ได้จากฐานข้อมูลทีละรายการ
                     foreach($result as $game){
-
                     ?>
-
+                
                     <tr>
-
+                    
                         <td class="cell-id">
                             #<?= $game["game_id"] ?>
                         </td>
@@ -811,7 +808,9 @@ error_reporting(E_ALL);
                         <td>
 
                             <img
+                            
                                 class="cover-thumb"
+                                
                                 src="<?= $game["game_cover"] ?>"
                                 alt=""
                             >

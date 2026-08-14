@@ -22,7 +22,7 @@ $sql = "UPDATE `games`
   `game_name`='$game_name',
   `game_price`='$game_price',
   `game_cover`='$game_cover',
-  `type_id`='$game_id'
+  `type_id`='$type_id'
    WHERE game_id = '$game_id'
    ";
 
